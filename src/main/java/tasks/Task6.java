@@ -22,10 +22,8 @@ public class Task6 {
             .collect(Collectors.toMap(Area::getId, Area::getName));
 
     return persons.stream()
-            .flatMap(x -> Map.of(x, personAreaIds.get(x.getId())).entrySet().stream())
-            .flatMap(e -> e.getValue().stream()
-                    .map(v -> new AbstractMap.SimpleImmutableEntry<>(e.getKey(), v)))
-            .map(x -> x.getKey().getFirstName() + " - " + areaNameIds.get(x.getValue()))
+            .flatMap(x -> personAreaIds.get(x.getId()).stream()
+                    .map(y -> x.getFirstName() + " - " + areaNameIds.get(y)))
             .collect(Collectors.toSet());
   }
 }
