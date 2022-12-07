@@ -35,17 +35,21 @@ public class Task8 {
 
   //Для фронтов выдадим полное имя, а то сами не могут
   public String convertPersonToString(Person person) {
-    String result = "";
+    StringBuilder result = new StringBuilder();
+
+    if (person == null) {
+      return result.toString();
+    }
 
     if (person.getSecondName() != null) {
-      result += person.getSecondName();
+      result.append(person.getSecondName());
     }
 
     if (person.getFirstName() != null) {
-      result += " " + person.getFirstName();
+      result.append(" ").append(person.getFirstName());
     }
 
-    return result;
+    return result.toString();
   }
 
   // словарь id персоны -> ее имя
