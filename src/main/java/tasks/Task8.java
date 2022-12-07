@@ -35,21 +35,9 @@ public class Task8 {
 
   //Для фронтов выдадим полное имя, а то сами не могут
   public String convertPersonToString(Person person) {
-    StringBuilder result = new StringBuilder();
-
-    if (person == null) {
-      return result.toString();
-    }
-
-    if (person.getSecondName() != null) {
-      result.append(person.getSecondName());
-    }
-
-    if (person.getFirstName() != null) {
-      result.append(" ").append(person.getFirstName());
-    }
-
-    return result.toString();
+    return Stream.of(person.getSecondName(),person.getMiddleName() ,person.getFirstName())
+            .filter(partOfName -> partOfName != null && !partOfName.isEmpty())
+            .collect(Collectors.joining(" "));
   }
 
   // словарь id персоны -> ее имя
