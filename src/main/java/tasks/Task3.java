@@ -22,11 +22,9 @@ public class Task3 {
 
     return persons.stream()
             .sorted(
-                    Comparator.nullsLast(
-                            Comparator.comparing(Person::getSecondName, nullsFirst(naturalOrder()))
+                    Comparator.comparing(Person::getSecondName, nullsFirst(naturalOrder()))
                             .thenComparing(Person::getFirstName, nullsFirst(naturalOrder()))
                             .thenComparing(Person::getCreatedAt, nullsFirst(naturalOrder()))
-                    )
             )
             .collect(Collectors.toList());
   }
